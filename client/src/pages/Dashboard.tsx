@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SearchIcon, ArrowRightIcon, BarChart3Icon, GlobeIcon, TrendingUpIcon } from "lucide-react";
 import AnalysesCard from "../components/AnalysesCard";
@@ -16,6 +16,35 @@ interface AnalysisSummary {
         bestPractices: number;
     };
 }
+
+const dummyAnalysisData: AnalysisSummary[] = [
+    {
+        _id: "1",
+        url: "https://example.com",
+        overallScore: 85,
+        status: "completed",
+        createdAt: new Date().toISOString(),
+        categories: {
+            seo: 90,
+            performance: 82,
+            accessibility: 88,
+            bestPractices: 85,
+        },
+    },
+    {
+        _id: "2",
+        url: "https://google.com",
+        overallScore: 92,
+        status: "completed",
+        createdAt: new Date().toISOString(),
+        categories: {
+            seo: 95,
+            performance: 90,
+            accessibility: 92,
+            bestPractices: 91,
+        },
+    },
+];
 
 export default function Dashboard() {
     const user = { name: "John Doe", plan: "free", analysisCount: 2 };

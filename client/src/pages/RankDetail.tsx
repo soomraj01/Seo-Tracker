@@ -36,6 +36,95 @@ interface TrackingData {
     createdAt: string;
 }
 
+const dummyWebsiteRanking: TrackingData = {
+    _id: "1",
+    keyword: "seo tools",
+    url: "https://example.com",
+    domain: "example.com",
+    currentPosition: 8,
+    currentPage: 1,
+    bestPosition: 5,
+    positionChange: 2,
+    rankHistory: [
+        {
+            date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
+            position: 15,
+            page: 2,
+            title: "Example SEO Tools",
+            snippet: "SEO tools and resources for improving website rankings.",
+        },
+        {
+            date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+            position: 13,
+            page: 2,
+            title: "Example SEO Tools",
+            snippet: "SEO tools and resources for improving website rankings.",
+        },
+        {
+            date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
+            position: 11,
+            page: 2,
+            title: "Example SEO Tools",
+            snippet: "SEO tools and resources for improving website rankings.",
+        },
+        {
+            date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+            position: 9,
+            page: 1,
+            title: "Example SEO Tools",
+            snippet: "SEO tools and resources for improving website rankings.",
+        },
+        {
+            date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+            position: 7,
+            page: 1,
+            title: "Example SEO Tools",
+            snippet: "SEO tools and resources for improving website rankings.",
+        },
+        {
+            date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+            position: 10,
+            page: 1,
+            title: "Example SEO Tools",
+            snippet: "SEO tools and resources for improving website rankings.",
+        },
+        {
+            date: new Date().toISOString(),
+            position: 8,
+            page: 1,
+            title: "Example SEO Tools",
+            snippet: "SEO tools and resources for improving website rankings.",
+        },
+    ],
+    competitors: [
+        {
+            position: 1,
+            url: "https://competitor-one.com",
+            domain: "competitor-one.com",
+            title: "Best SEO Tools",
+            snippet: "Discover powerful SEO tools and resources.",
+        },
+        {
+            position: 3,
+            url: "https://competitor-two.com",
+            domain: "competitor-two.com",
+            title: "SEO Optimization Tools",
+            snippet: "Improve your website's SEO performance.",
+        },
+        {
+            position: 6,
+            url: "https://competitor-three.com",
+            domain: "competitor-three.com",
+            title: "SEO Ranking Tools",
+            snippet: "Track rankings and improve search visibility.",
+        },
+    ],
+    active: true,
+    lastChecked: new Date().toISOString(),
+    status: "completed",
+    createdAt: new Date().toISOString(),
+};
+
 export default function RankDetail() {
     const { id } = useParams();
     const [tracking, setTracking] = useState<TrackingData | null>(null);
@@ -145,6 +234,7 @@ export default function RankDetail() {
             if (i === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         });
+
         ctx.stroke();
 
         // Draw gradient fill
@@ -161,6 +251,7 @@ export default function RankDetail() {
             if (i === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         });
+
         ctx.lineTo(padding.left + chartW, h - padding.bottom);
         ctx.lineTo(padding.left, h - padding.bottom);
         ctx.closePath();
